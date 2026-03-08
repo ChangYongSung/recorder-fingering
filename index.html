@@ -520,8 +520,8 @@ function drawOneScore(svgEl, nd){
 
   const clef=document.createElementNS('http://www.w3.org/2000/svg','text');
   clef.setAttribute('x','8');
-  clef.setAttribute('y',String(line1y+22));
-  clef.setAttribute('font-size','140');
+  clef.setAttribute('y',String(line1y+2));
+  clef.setAttribute('font-size','98');
   clef.setAttribute('fill','#8b1a1a');
   clef.setAttribute('font-family','serif');
   clef.textContent='𝄞';
@@ -614,8 +614,8 @@ function drawScore(nd){
   se(svgEl,'line',{x1:W-13,x2:W-13,y1:line1y-4*lineGap,y2:line1y,stroke:'#8b4513','stroke-width':1.2});
   const clef=document.createElementNS('http://www.w3.org/2000/svg','text');
   clef.setAttribute('x','8');
-  clef.setAttribute('y',String(line1y+22));
-  clef.setAttribute('font-size','140');
+  clef.setAttribute('y',String(line1y+2));
+  clef.setAttribute('font-size','98');
   clef.setAttribute('fill','#8b1a1a');
   clef.setAttribute('font-family','serif');
   clef.textContent='𝄞';
