@@ -308,7 +308,20 @@ const ALL = [
 // ── 오디오 ──
 const actx = new (window.AudioContext||window.webkitAudioContext)();
 const mGain = actx.createGain(); mGain.gain.value=0.6; mGain.connect(actx.destination);
-window.addEventListener('pointerdown',()=>{ if(actx.state==='suspended') actx.resume(); },{once:true,capture:true});
+window.addEventListener('pointerdown', async ()=>{
+  if(actx.state==='suspended') await actx.resume();
+  // 워밍업: 극소음 사인파를 0.8초 재생해 오디오 파이프라인 완전 초기화
+  const now = actx.currentTime;
+  const o = actx.createOscillator();
+  const g = actx.createGain();
+  o.type = 'sine';
+  o.frequency.value = 440;
+  g.gain.setValueAtTime(0.00001, now);          // 사람이 들을 수 없는 극소음
+  g.gain.linearRampToValueAtTime(0.00001, now+0.8);
+  o.connect(g).connect(actx.destination);
+  o.start(now);
+  o.stop(now+0.8);
+}, {once:true, capture:true});
 // 전역 안전망: 건반 밖에서 손 떼도 리코더 정지
 window.addEventListener('pointerup',   ()=>{ stopRecorder(); });
 window.addEventListener('pointercancel',()=>{ stopRecorder(); });
