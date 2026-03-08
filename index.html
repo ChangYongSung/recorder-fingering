@@ -127,7 +127,6 @@ h1 { font-family:'Jua',sans-serif; font-size:2.3rem; color:#1a2a3a; text-align:c
       <button class="piano-btn btn-tone" id="btn-recorder" onclick="setTone('recorder')">🎵 리코더</button>
     </div>
     <div class="btn-group">
-      <button class="piano-btn btn-size" id="btn-x05" onclick="setSize('x05')">x0.5</button>
       <button class="piano-btn btn-size" id="btn-x1" onclick="setSize('x1')">x1</button>
       <button class="piano-btn btn-size active" id="btn-x2" onclick="setSize('x2')">x2</button>
       <button class="piano-btn btn-size" id="btn-x3" onclick="setSize('x3')">x3</button>
@@ -343,9 +342,9 @@ function setVolume(v){
 }
 
 function setSize(sz){
-  const fSizes = {x05:364, x1:520, x2:624, x3:780};
-  const svgW   = {x05:154, x1:220, x2:264, x3:330};
-  const svgH   = {x05:175, x1:250, x2:300, x3:375};
+  const fSizes = {x1:364, x2:624, x3:780};
+  const svgW   = {x1:154, x2:264, x3:330};
+  const svgH   = {x1:175, x2:300, x3:375};
   const fp = fSizes[sz];
   const sw = svgW[sz], sh = svgH[sz];
   document.querySelectorAll('.fingering-img').forEach(img=>img.style.height=fp+'px');
